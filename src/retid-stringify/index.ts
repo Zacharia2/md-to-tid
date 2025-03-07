@@ -1,6 +1,6 @@
 import { Options as IToMarkdownOptions, toTid } from '../mdast-util-to-wikitext';
-import { Plugin, Processor, CompilerFunction } from 'unified';
-import { Root as MdastRoot, Content as MdastContent } from 'mdast';
+import { Plugin, CompilerFunction } from 'unified';
+import { Root as MdastRoot, RootContent as MdastContent } from 'mdast';
 import { merge } from 'lodash';
 
 type MdastNode = MdastRoot | MdastContent;

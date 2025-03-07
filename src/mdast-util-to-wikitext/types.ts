@@ -1,6 +1,6 @@
 export type UnistParent = import('unist').Parent;
 export type Root = import('mdast').Root;
-export type Content = import('mdast').Content;
+export type Content = import('mdast').RootContent;
 export type Node = Root | Content;
 export type Parent = Extract<Node, UnistParent>;
 export type SafeOptions = {
