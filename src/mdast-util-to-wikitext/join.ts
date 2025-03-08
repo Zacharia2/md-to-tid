@@ -1,10 +1,10 @@
-import type { Context, Join, Parent, Node } from './types';
+import type { Context, Join, Parent, Nodes } from './types';
 
 import { formatCodeAsIndented } from './util/format-code-as-indented';
 
 export const join: Join[] = [joinDefaults];
 
-function joinDefaults(left: Node, right: Node, parent: Parent, context: Context): boolean | null | void | number {
+function joinDefaults(left: Nodes, right: Nodes, parent: Parent, context: Context): boolean | null | void | number {
   // Indented code after list or another indented code.
   if (
     right.type === 'code' &&

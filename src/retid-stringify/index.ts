@@ -1,15 +1,12 @@
 import { Options as IToMarkdownOptions, toTid } from '../mdast-util-to-wikitext';
 import { Plugin, CompilerFunction } from 'unified';
-import { Root as MdastRoot, RootContent as MdastContent } from 'mdast';
 import { merge } from 'lodash';
-
-type MdastNode = MdastRoot | MdastContent;
-
 export type IOptions = Omit<IToMarkdownOptions, 'extensions'>;
+import type { Nodes } from 'mdast';
 
 // @ts-expect-error: bad type written by unified author.
-export const retidStringify: Plugin<[(IOptions | undefined)?] | void[], MdastRoot, string> = function (options) {
-  const compiler: CompilerFunction<MdastNode, string> = (tree) => {
+export const retidStringify: Plugin<[(IOptions | undefined)?] | void[], Nodes, string> = function (options) {
+  const compiler: CompilerFunction<any, string> = (tree) => {
     // Assume options.
     const settings = this.data('settings') as IOptions;
 

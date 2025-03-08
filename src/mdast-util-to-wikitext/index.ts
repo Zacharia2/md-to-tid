@@ -3,10 +3,10 @@ import { configure } from './configure';
 import { handle } from './handle/index';
 import { join } from './join';
 import { conflict } from './conflicts';
-import type { Context, Node, Options, Handle } from './types';
+import type { Context, Options, Handle, Nodes } from './types';
 export * from './types';
 
-export function toTid(tree: Node, options: Options = {}): string {
+export function toTid(tree: Nodes, options: Options = {}): string {
   const context: Context = {
     enter,
     stack: [],
@@ -49,15 +49,15 @@ export function toTid(tree: Node, options: Options = {}): string {
   }
 }
 
-function invalid(value: Node) {
+function invalid(value: Nodes) {
   throw new Error('Cannot handle value `' + value + '`, expected node');
 }
 
-function unknown(node: Node) {
+function unknown(node: Nodes) {
   throw new Error('Cannot handle unknown node `' + node.type + '`');
 }
 
-function joinDefinition(left: Node, right: Node) {
+function joinDefinition(left: Nodes, right: Nodes) {
   // No blank line between adjacent definitions.
   if (left.type === 'definition' && left.type === right.type) {
     return 0;

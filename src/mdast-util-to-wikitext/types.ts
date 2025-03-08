@@ -1,8 +1,7 @@
+import type { Nodes } from 'mdast';
 export type UnistParent = import('unist').Parent;
-export type Root = import('mdast').Root;
-export type Content = import('mdast').RootContent;
-export type Node = Root | Content;
-export type Parent = Extract<Node, UnistParent>;
+export { Nodes };
+export type Parent = Extract<Nodes, UnistParent>;
 export type SafeOptions = {
   before: string;
   after: string;
@@ -38,7 +37,7 @@ export type Context = {
 };
 export type Handle = (node: any, parent: Parent | null | undefined, context: Context, safeOptions: SafeOptions) => string;
 export type Handlers = Record<string, Handle>;
-export type Join = (left: Node, right: Node, parent: Parent, context: Context) => boolean | null | void | number;
+export type Join = (left: Nodes, right: Nodes, parent: Parent, context: Context) => boolean | null | void | number;
 export type Conflict = {
   character: string;
   conflict?: string | string[] | undefined;

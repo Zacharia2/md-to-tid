@@ -1,5 +1,4 @@
-import type { Context, Node, Parent } from '../types';
-
+import type { Context, Nodes, Parent } from '../types';
 
 export function containerFlow(parent: Parent, context: Context): string {
   const indexStack = context.indexStack;
@@ -29,7 +28,7 @@ export function containerFlow(parent: Parent, context: Context): string {
 
   return results.join('');
 
-  function between(left: Node, right: Node): string {
+  function between(left: Nodes, right: Nodes): string {
     let index = context.join.length;
 
     while (index--) {
